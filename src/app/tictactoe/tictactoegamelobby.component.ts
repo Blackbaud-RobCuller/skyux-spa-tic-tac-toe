@@ -15,7 +15,6 @@ export class TicTacToeGameLobbyComponent implements OnInit, OnDestroy {
     title: string;
 
     constructor(private service: GameDataService) {
-        //console.log(this.service);
     }
 
     saveGames() {

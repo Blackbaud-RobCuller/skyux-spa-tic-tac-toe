@@ -13,5 +13,6 @@ export class TicTacToeComponent {
 
     onClick(index: number): void {
         this.game.moveAt(index);
+        this.game.aiMove();
     }
 }

@@ -1,5 +1,5 @@
 export class TicTacToeGame {
-    private move = 0;
+    private player1Turn = true;
     gameOver: boolean = false;
     cat: boolean = false;
     winningPlayer = 'O';
@@ -12,7 +12,7 @@ export class TicTacToeGame {
             this.title = titleOrState;
         } else {
             this.board = titleOrState.board;
-            this.move = titleOrState.move;
+            this.player1Turn = titleOrState.player1Turn;
             this.cat = titleOrState.cat;
             this.winningPlayer = titleOrState.winningPlayer;
             this.title = titleOrState.title;
@@ -22,29 +22,20 @@ export class TicTacToeGame {
 
     moveAt(index: number) {
         if (this.board[index] === 1) {
-            if (this.move % 2 === 0) {
-                this.board[index] = 2;
+            this.board[index] = 2;
 
-                this.checkBoardState();
-                this.move += 1;
+            this.checkBoardState();
+            this.player1Turn = false;
+        }
+    }
 
-                if (!this.gameOver) {
-                    let nextMove = this.getNextOpenSquare();
-                    this.board[nextMove] = 6;
+    aiMove(): void {
+        if (!this.gameOver) {
+            let nextMove = this.getNextOpenSquare();
+            this.board[nextMove] = 6;
 
-                    this.checkBoardState();
-                    this.move += 1;
-                }
-            }
-
-
-            // else {
-            //     //this.board[index] = 6;
-
-            // }
-
-            // this.checkBoardState();
-            //this.move += 1;
+            this.checkBoardState();
+            this.player1Turn = true;
         }
     }
 
@@ -74,11 +65,12 @@ export class TicTacToeGame {
             (c + e + g) % 6 === 0;
 
         if (winner) {
-            if (this.move % 2 === 0) {
+            if (this.player1Turn) {
                 this.winningPlayer = 'X';
             }
 
             this.gameOver = true;
+            return;
         }
 
         let square = this.getNextOpenSquare();
