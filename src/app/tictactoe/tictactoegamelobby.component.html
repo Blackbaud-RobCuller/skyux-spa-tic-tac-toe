@@ -1,0 +1,20 @@
+<div class="tic-tac-toe-lobby">
+    <div class="tic-tac-toe-list">
+        <input [(ngModel)]="title" type="text">
+        <button (click)="createGame(title)">Create a game
+        </button>
+
+        <ul>
+            <li *ngFor="let game of games">
+                <i class="fa fa-trash" aria-hidden="true" (click)="removeGame(game)"></i>
+
+                <a (click)="selectGame(game)">{{game.title}}</a>
+
+            </li>
+        </ul>
+        <button (click)="saveGames()">Save games</button>
+    </div>
+    <div class="tic-tac-toe-board-holder">
+        <tic-tac-toe *ngIf="selectedGame" [game]="selectedGame"></tic-tac-toe>
+    </div>
+</div>

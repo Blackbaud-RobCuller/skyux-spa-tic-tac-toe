@@ -1,0 +1,24 @@
+
+
+<div class="tic-tac-toe-board">
+    <div *ngFor="let square of game.board; let i = index"
+        (click)="onClick(i)"
+        class="tic-tac-toe-square">
+        <div *ngIf="square===1">&nbsp;</div>
+        <div *ngIf="square===2">X</div>
+        <div *ngIf="square===6">O</div>
+        </div>
+
+    <!--<div class="tic-tac-toe-square ttt-rb ttt-bb">X</div>
+    <div class="tic-tac-toe-square ttt-rb ttt-bb" >O</div>
+    <div class="tic-tac-toe-square ttt-bb">X</div>
+    <div class="tic-tac-toe-square ttt-rb ttt-bb" >X</div>
+    <div class="tic-tac-toe-square ttt-rb ttt-bb">X</div>
+    <div class="tic-tac-toe-square ttt-bb">X</div>
+    <div class="tic-tac-toe-square ttt-rb">O</div>
+    <div class="tic-tac-toe-square ttt-rb">X</div>
+    <div class="tic-tac-toe-square">X</div>-->
+</div>
+
+<h1 *ngIf="game.gameOver">Game over {{game.winningPlayer}} wins</h1>
+<h1 *ngIf="game.cat">CAT!</h1>
