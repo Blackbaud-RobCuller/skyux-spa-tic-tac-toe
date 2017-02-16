@@ -1,2 +1,2 @@
 # skyux-template
-Template for SKY UX applications created by the SKY UX CLI
+The files in this repo represent a single page app created by skyux.  The main functionality is a tic-tac-toe app created during Iron Yard Angular 2 training.
